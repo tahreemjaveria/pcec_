@@ -24,6 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

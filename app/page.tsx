@@ -1,65 +1,72 @@
-import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { ShieldCheck, Truck, Factory, ArrowRight, Star } from "lucide-react";
+import { PCEC_CONFIG } from "@/lib/config";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="min-h-screen bg-white font-sans">
+      <Navbar />
+      
+      {/* HERO SECTION */}
+      <section className="relative bg-[#1A1A1A] py-20 overflow-hidden">
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#E31837 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        <div className="container mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center">
+          <div className="text-left">
+            <Badge className="mb-4 bg-[#E31837]">Trusted by 500+ Industries</Badge>
+            <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-6">
+              HEAVY DUTY <br/><span className="text-[#E31837]">PERFORMANCE.</span>
+            </h1>
+            <p className="text-gray-400 text-xl mb-8">
+              Perfect Constructions and Earth Moving Equipment Corporation is India's premium supplier for technical tools.
+            </p>
+            <div className="flex gap-4">
+              <Button size="lg" className="bg-[#E31837] hover:bg-red-700 h-14 px-8 text-lg font-bold">SHOP CATALOG</Button>
+              <Button size="lg" variant="outline" className="text-white border-white h-14 px-8 text-lg hover:bg-white hover:text-black">B2B QUOTES</Button>
+            </div>
+          </div>
+          <div className="hidden md:block bg-gradient-to-br from-gray-800 to-transparent p-1 rounded-2xl">
+             <div className="bg-secondary rounded-2xl h-[400px] flex items-center justify-center text-gray-600 italic">
+               [ Industrial Equipment Showcase Image ]
+             </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* BRAND BAR */}
+      <div className="bg-gray-50 py-8 border-b">
+        <div className="container mx-auto px-6 flex flex-wrap justify-between items-center opacity-50 grayscale hover:grayscale-0 transition-all gap-8">
+          <span className="text-2xl font-black text-gray-400">MAKITA</span>
+          <span className="text-2xl font-black text-gray-400">3M</span>
+          <span className="text-2xl font-black text-gray-400">CROMWELL</span>
+          <span className="text-2xl font-black text-gray-400">BOSCH</span>
+          <span className="text-2xl font-black text-gray-400">DEWALT</span>
         </div>
-      </main>
-    </div>
+      </div>
+
+      {/* TRUST INDICATORS */}
+      <section className="py-16 container mx-auto px-6">
+        <div className="grid md:grid-cols-3 gap-10">
+          {[
+            { icon: <ShieldCheck size={40}/>, title: "Authorized Dealer", desc: "100% genuine products with manufacturer warranty." },
+            { icon: <Truck size={40}/>, title: "Express Delivery", desc: "Fast pan-India shipping for all industrial orders." },
+            { icon: <Factory size={40}/>, title: "B2B Solutions", desc: "Special pricing and GST invoices for business accounts." }
+          ].map((item, i) => (
+            <div key={i} className="flex gap-4 p-6 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
+              <div className="text-[#E31837]">{item.icon}</div>
+              <div>
+                <h3 className="font-bold text-lg">{item.title}</h3>
+                <p className="text-gray-500 text-sm">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
+}
+
+function Badge({ children, className }: { children: React.ReactNode, className?: string }) {
+  return <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-white ${className}`}>{children}</span>;
 }
