@@ -120,10 +120,32 @@
 }
 
 @layer base {
-  h1, h2, h3, h4 {
-    @apply font-display tracking-tighter uppercase;
+  /* CLASSY TECHNICAL GRID: Dark Charcoal + Tiny Plus Points */
+  .bg-industrial-grid {
+    background-color: #111111;
+    background-image: 
+      radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 0);
+    background-size: 40px 40px;
+    background-position: -19px -19px;
+    position: relative;
   }
-  body {
-    @apply font-sans tracking-tight text-slate-900;
+  
+  /* Horizontal and Vertical hairline lines */
+  .bg-industrial-grid::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* REFINED FONT SCALE */
+  h1 { 
+    font-size: clamp(2.5rem, 5vw, 3.8rem) !important; 
+    line-height: 1.1; 
+    letter-spacing: -0.02em; 
+    font-weight: 700; 
   }
 }
