@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Condensed } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ 
   subsets: ["latin"], 
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${robotoCondensed.variable}`}>
       <body className="antialiased font-sans">
         {children}
+        <Footer />
       </body>
     </html>
   );
